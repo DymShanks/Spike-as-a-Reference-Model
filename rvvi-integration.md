@@ -12,18 +12,18 @@ Spike utilizes an autotools-based build system. To compile the RVVI bridge seaml
 2. Modify the autotools manifest to include the new component:
 
 **File:** `riscv/riscv.mk.in`
-` ` `makefile
+```makefile
 riscv_srcs = \
   rvvi_bridge.cc \
   processor.cc \
   execute.cc \
   # ... (existing files)
-` ` `
+```
 
 ## 3. Configuration and Compilation
 To ensure the internal headers resolve properly during compilation, the path to the official RVVI standard headers must be passed to the configure script using `CPPFLAGS`.
 
-` ` `bash
+```bash
 # Create a dedicated build directory
 mkdir build
 cd build
@@ -33,6 +33,6 @@ cd build
 
 # Compile the simulator
 make -j$(nproc)
-` ` `
-
+```
+```
 This configuration successfully bakes the RVVI bridge directly into the core `libriscv.a` static library and links it into the final `spike` executable without modifying the root build architecture.
